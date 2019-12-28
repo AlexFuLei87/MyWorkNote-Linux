@@ -28,3 +28,11 @@ grep -B 10 keyword catalina.out 显示keyword及前10行
 
 grep -A 10 keyword catalina.out 显示keyword及后10行
 ```
+
+## 3、tcpdum的使用
+
+```shell
+抓请求包：tcpdump -i any -Xs 0 -vv port 8080 -w 8080.cap
+
+解析请求包：strings 8080.capp
+```
