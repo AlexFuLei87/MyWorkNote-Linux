@@ -18,6 +18,19 @@ expect {
 expect "100%"
 expect eof
 EOF
+
+小坑：EOF后面确保没有空格
+```
+```shell
+expect <<EOF  
+    set timeout 10 
+    spawn ssh $user@$ip 
+    expect { 
+         "yes/no" { send "yes\n";exp_continue } 
+        "password" { send "$password\n" }    
+        }     
+    expect "]#" { send "useradd hehe\n" }  
+EOF
 ```
 
 ## 2、对grep的理解
@@ -41,6 +54,13 @@ grep -r "待搜索关键词" 代码路径
 抓请求包：tcpdump -i any -Xs 0 -vv port 8080 -w 8080.cap
 
 解析请求包：strings 8080.capp
+
+//查看本机与mysql的操作命令 注意 -i any表示监听所有网络接口，我们也根据自身情况选择网络接口
+# tcpdump -i any -w - dst port 3306 |strings  
+
+//查看本机58895上与mysql的命令   注意 -i any 表示监听所有网络接口，我们需要根据自身情况选择网络接口
+# tcpdump -i any -w - dst port 3306 and src port 58895 |strings 
+
 ```
 
 ## 4、xargs的使用
