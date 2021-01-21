@@ -117,3 +117,6 @@ find /var/ -name "*.log" |xargs -I [] cp [] /tmp/ 【xargs 默认用是i表示{}
 ```
 
 jmap -histo 8264 > 8264.log
+
+## 7 、Linux—shell中$(( ))、$( )、``与${ }的区别
+博客地址 https://www.cnblogs.com/chengd/p/7803664.html
